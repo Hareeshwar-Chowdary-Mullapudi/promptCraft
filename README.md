@@ -14,3 +14,4 @@ Generate images from text prompts and share them with a community showcase.
 - Create images from text prompts
 - Share creations to a community gallery
 - Browse and search community posts
+
