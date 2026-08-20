@@ -1,0 +1,13 @@
+{
+  "name": "promptcraft",
+  "private": true,
+  "version": "1.0.0",
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "scripts": {
+    "build": "npm run build --workspace=promptcraft-client",
+    "start": "npm run start --workspace=promptcraft-server"
+  }
+}
