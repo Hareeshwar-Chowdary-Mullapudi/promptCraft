@@ -1,7 +1,9 @@
 import FileSaver from 'file-saver';
 import { surpriseMePrompts } from '../constants';
 
-export const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8080';
+export const API_URL = (import.meta.env.VITE_API_URL || 'http://localhost:8080')
+    .split(',')[0]
+    .trim();
 
 export function getRandomPrompt(prompt) {
     const randomIndex = Math.floor(Math.random() * surpriseMePrompts.length);

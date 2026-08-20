@@ -17,7 +17,14 @@ cloudinary.config({
 router.route('/').get(async (req, res) => {
     try {
         const posts = await Post.find({});
-        res.status(200).json({ success: true, data: posts });
+        const data = posts.map((post) => {
+            const obj = post.toObject();
+            if (obj.photo?.startsWith('http://res.cloudinary.com')) {
+                obj.photo = obj.photo.replace('http://', 'https://');
+            }
+            return obj;
+        });
+        res.status(200).json({ success: true, data });
     } catch (err) {
         res.status(500).json({ success: false, message: 'Fetching posts failed, please try again' });
     }
@@ -32,7 +39,7 @@ router.route('/').post(async (req, res) => {
         const newPost = await Post.create({
             name,
             prompt,
-            photo: photoUrl.url,
+            photo: photoUrl.secure_url || photoUrl.url,
         });
 
         res.status(200).json({ success: true, data: newPost });
