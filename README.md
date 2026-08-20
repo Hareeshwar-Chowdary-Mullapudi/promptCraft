@@ -35,3 +35,17 @@ Share your creation with the community.
 - Create images from text prompts
 - Share creations to a community gallery
 - Browse and search community posts
+
+## Deploy
+
+### Netlify (frontend)
+- Base directory: `client`
+- Build: `npm run build`
+- Publish: `dist`
+- Env: `VITE_API_URL` = your Render backend URL
+
+### Render (backend)
+- Root directory: `server`
+- Build command: `npm run build` (no-op; Express needs no compile step)
+- Start command: `npm start`
+- Env vars: `MONGODB_URL`, `HF_TOKEN`, `HF_MODEL`, `CLOUDINARY_*`, `PORT`, `FRONTEND_URL` (your Netlify URL)
